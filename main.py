@@ -1,9 +1,9 @@
 class Node:
 
     def __init__(self, value):
-        self.value = value  # значение узла
-        self.left = None  # левый потомок
-        self.right = None  # правый потомок
+        self.value = value  
+        self.left = None  
+        self.right = None  
 
 
 class BST:
@@ -11,7 +11,7 @@ class BST:
     def __init__(self):
         self.root = None
 
-    def insert(self, value): #вставка элемента
+    def insert(self, value): 
         if self.root is None:
             self.root = Node(value)
             print(f"Значение {value} добавлено как корень дерева")
@@ -21,29 +21,24 @@ class BST:
     def _insert_recursive(self, node, value):
         """Рекурсивная вставка значения"""
         if value < node.value:
-            # Вставляем в левое поддерево
             if node.left is None:
                 node.left = Node(value)
                 print(f"Значение {value} добавлено")
             else:
                 self._insert_recursive(node.left, value)
         elif value > node.value:
-            # Вставляем в правое поддерево
             if node.right is None:
                 node.right = Node(value)
                 print(f"Значение {value} добавлено")
             else:
                 self._insert_recursive(node.right, value)
         else:
-            # Значение уже существует
             print(f"Значение {value} уже есть в дереве!")
 
     def search(self, target):
-        """Найти значение в дереве (возвращает True/False)"""
         return self._search_recursive(self.root, target)
 
     def _search_recursive(self, node, target):
-        """Рекурсивный поиск значения"""
         if node is None:
             return False
         if target == node.value:
@@ -54,7 +49,6 @@ class BST:
             return self._search_recursive(node.right, target)
 
     def inorder(self):
-        """Вывести значения в порядке возрастания (симметричный обход)"""
         if self.root is None:
             print("Дерево пустое!")
             return []
@@ -67,11 +61,10 @@ class BST:
         return result
 
     def _inorder_recursive(self, node, result):
-        """Рекурсивный симметричный обход"""
         if node is not None:
-            self._inorder_recursive(node.left, result)  # левое поддерево
+            self._inorder_recursive(node.left, result)
             result.append(node.value)  # корень
-            self._inorder_recursive(node.right, result)  # правое поддерево
+            self._inorder_recursive(node.right, result)
 
     def find_kth_min(self, k):
         if self.root is None:
