@@ -19,7 +19,6 @@ class BST:
             self._insert_recursive(self.root, value)
 
     def _insert_recursive(self, node, value):
-        """Рекурсивная вставка значения"""
         if value < node.value:
             if node.left is None:
                 node.left = Node(value)
